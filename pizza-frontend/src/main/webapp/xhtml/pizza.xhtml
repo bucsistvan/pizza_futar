@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui"
+      xml:lang="en" lang="en"
+      xmlns:crud="http://java.sun.com/jsf/composite/crud"
+      xmlns:tp="http://java.sun.com/jsf/composite/">
+<body>
+<ui:composition template="layout/mainTemplate.xhtml">
+
+<ui:define name="title">Pizzák</ui:define>
+<ui:define name="content">
+<h:form id="form" rendered="#{loggedInUserBean.isLoggedIn()}">
+    <!--<ui:composition template="../templates/template.xhtml"/>-->
+    <!--<ui:insert name="menu">
+        <ui:include src="../templates/template.xhtml"></ui:include>
+    </ui:insert>-->
+    <p:growl id="growl" showDetail="false"/>
+
+
+
+    <crud:crudFunctions id="crudFunctions" bean="#{pizzaCRUDMbean}" onCompleShowDialog="PF('pizzaDialog').show()"
+                        onCompleUpdate="@([id$=pizzaForm])" onRendered="#{loggedInUserBean.isAdmin()}"/>
+
+
+
+    <p:dataTable id="table" value="#{pizzaCRUDMbean.list}" var="pizza" rows="10"
+                 selectionMode="single" selection="#{pizzaCRUDMbean.selectedEntity}" rowKey="#{pizza.id}"
+                 paginator="true"
+                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                 rowsPerPageTemplate="5,10,{ShowAll|'All'}">
+        <p:ajax exportable="false" event="rowSelect" update="@form"/>
+        <p:column style="width:2rem" exportable="false" toggleable="false"> <p:rowToggler/> </p:column>
+
+        <p:column toggleable="false" sortBy="#{pizza.id}" filterBy="#{pizza.id}" filterMatchMode="contains"
+                  headerText="ID" rendered="#{loggedInUserBean.isAdmin()}">
+            <h:outputText value="#{pizza.id}"/>
+        </p:column>
+        <p:column sortBy="#{pizza.name}" filterBy="#{pizza.name}" filterMatchMode="contains" headerText="Név">
+            <h:outputText value="#{pizza.name}"/>
+        </p:column>
+        <p:column sortBy="#{pizza.price}" filterBy="#{pizza.price}" filterMatchMode="contains"
+                  headerText="Ár">
+            <h:outputText value="#{pizza.price} ft."/>
+        </p:column>
+        <p:column sortBy="#{pizza.createdDate}" filterBy="#{pizza.createdDate}" filterMatchMode="contains"
+                  headerText="Létrehozás dátuma" rendered="#{loggedInUserBean.isAdmin()}">
+            <h:outputText value="#{pizza.createdDate}">
+                <f:convertDateTime pattern="dd.MM.yyyy HH:mm" />
+            </h:outputText>
+        </p:column>
+        <p:column sortBy="#{pizza.modifiedDate}" filterBy="#{pizza.modifiedDate}" filterMatchMode="contains"
+                  headerText="Utolsó módosítás dátuma" rendered="#{loggedInUserBean.isAdmin()}">
+            <h:outputText value="#{pizza.modifiedDate}">
+                <f:convertDateTime pattern="dd.MM.yyyy HH:mm" />
+            </h:outputText>
+        </p:column>
+        <p:column sortBy="#{pizza.createdBy.userName}" filterBy="#{pizza.createdBy.userName}" filterMatchMode="contains"
+                  headerText="Létrehozó felhasználó" rendered="#{loggedInUserBean.isAdmin()}">
+            <h:outputText value="#{pizza.createdBy.userName}"/>
+        </p:column>
+        <p:column sortBy="#{pizza.modifiedBy.userName}" filterBy="#{pizza.modifiedBy.userName}" filterMatchMode="contains"
+                  headerText="Utolsó módosító felhasználó" rendered="#{loggedInUserBean.isAdmin()}">
+            <h:outputText value="#{pizza.modifiedBy.userName}"/>
+        </p:column>
+        <p:rowExpansion>
+            <div>
+                Leírás: #{pizza.description}
+            </div>
+        </p:rowExpansion>
+    </p:dataTable>
+
+
+    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="400">
+        <p:commandButton value="Nem" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+        <p:commandButton value="Igen" type="button" styleClass="ui-confirmdialog-yes"/>
+    </p:confirmDialog>
+
+</h:form>
+
+
+<p:dialog id="pizzaDialog" widgetVar="pizzaDialog" header="Form" modal="true" closable="true">
+    <h:form id="pizzaForm">
+        <p:panelGrid layout="grid" columns="2" id="formPanel" style="width:450px">
+            <p:outputLabel value="Név"/>
+            <p:inputText required="true" requiredMessage="Név kötelező"
+                         value="#{pizzaCRUDMbean.selectedEntity.name}"/>
+
+            <p:outputLabel value="Leírás"/>
+            <p:inputText required="true" requiredMessage="Leírás kötelező"
+                         value="#{pizzaCRUDMbean.selectedEntity.description}"/>
+
+            <p:outputLabel value="Ár"/>
+            <p:inputNumber thousandSeparator="" decimalPlaces="0" required="true" requiredMessage="Ár kötelező"
+                         value="#{pizzaCRUDMbean.selectedEntity.price}"/>
+
+<!--
+            <p:outputLabel value="Tulajdonos"/>
+            <p:selectOneMenu value="#{pizzaCRUDMbean.selectedEntity.owner}" converter="#{ownerConverter}" >
+                <f:selectItem itemValue="#{null}" itemLabel="Kérem válasszon"/>
+                <f:selectItems value="#{pizzaCRUDMbean.ownerList}" var="owner" itemLabel="#{owner.fullName}" itemValue="#{owner}"/>
+            </p:selectOneMenu>
+            -->
+
+            <p:commandButton value="Mentés" icon="pi pi-save" actionListener="#{pizzaCRUDMbean.save()}" validateClient="true"
+                             process="formPanel" update=":form">
+            </p:commandButton>
+        </p:panelGrid>
+    </h:form>
+</p:dialog>
+</ui:define>
+</ui:composition>
+</body>
+</html>
