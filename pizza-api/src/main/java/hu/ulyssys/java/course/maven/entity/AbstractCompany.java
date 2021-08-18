@@ -7,7 +7,7 @@ import java.util.Date;
 public abstract class AbstractCompany extends AbstractEntity{
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "modified_date", nullable = false)
+    @Column(name = "modified_date")
     private Date modifiedDate;
 
     @JoinColumn(name = "created_user_id")

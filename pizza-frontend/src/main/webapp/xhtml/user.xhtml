@@ -34,7 +34,6 @@
                  currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
                  rowsPerPageTemplate="5,10,{ShowAll|'All'}">
         <p:ajax exportable="false" event="rowSelect" update="@form"/>
-        <p:column style="width:2rem" exportable="false" toggleable="false"> <p:rowToggler/> </p:column>
         <p:column toggleable="false" sortBy="#{user.id}" filterBy="#{user.id}" filterMatchMode="contains"
                   headerText="ID">
             <h:outputText value="#{user.id}"/>

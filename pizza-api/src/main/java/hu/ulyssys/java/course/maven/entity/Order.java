@@ -1,6 +1,7 @@
 package hu.ulyssys.java.course.maven.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,6 +11,7 @@ import java.util.List;
 @Table(name = "orders")
 public class Order extends AbstractCompany {
 
+    @Future
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "delivered_date", nullable = false)
     private Date deliveredDate;
@@ -18,21 +20,21 @@ public class Order extends AbstractCompany {
     @ManyToOne(fetch = FetchType.EAGER)
     private Courier courier;
 
-    //@Min(value = 1)
+    @Min(value = 1)
     @JoinColumn(name = "order_id")
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Pizza> pizzas = new ArrayList<>();
 
-    @Column(name = "settlement")
+    @Column(name = "settlement", length = 200)
     private String settlement;
 
-    @Column(name = "public_space")
+    @Column(name = "public_space", length = 200)
     private String publicSpace;
 
-    @Column(name = "nature_of_public_space")
+    @Column(name = "nature_of_public_space", length = 200)
     private String natureOfPublicSpace;
 
-    @Column(name = "house_number")
+    @Column(name = "house_number", length = 200)
     private String houseNumber;
 
     public String getSettlement() {

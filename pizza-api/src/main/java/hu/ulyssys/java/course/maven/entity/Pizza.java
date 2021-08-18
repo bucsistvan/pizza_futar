@@ -45,24 +45,6 @@ public class Pizza extends AbstractCompany {
     public void setPrice(int price) {
         this.price = price;
     }
-/*
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Pizza pizza = (Pizza) o;
-
-        if (getId() != null ? !getId().equals(pizza.getId()) : pizza.getId() != null) return false;
-        return Objects.equals(name, pizza.name);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getId() != null ? getId().hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
-    }*/
 
     @Override
     public boolean equals(Object o) {

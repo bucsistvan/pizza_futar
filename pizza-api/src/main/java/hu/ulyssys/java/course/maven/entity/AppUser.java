@@ -10,7 +10,7 @@ public class AppUser extends AbstractEntity{
 
     public static  final String FIND_BY_USERNAME = "AppUser.findByUsername";
 
-    @Column(name = "user_name", unique = true)
+    @Column(name = "user_name", unique = true, nullable = false, length = 200)
     private String userName;
 
     @Column(name = "password_hash")

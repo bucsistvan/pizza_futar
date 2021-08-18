@@ -33,7 +33,7 @@
                  currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
                  rowsPerPageTemplate="5,10,{ShowAll|'All'}">
         <p:ajax exportable="false" event="rowSelect" update="@form"/>
-        <p:column style="width:2rem" exportable="false" toggleable="false"> <p:rowToggler/> </p:column>
+
         <p:column toggleable="false" sortBy="#{courier.id}" filterBy="#{courier.id}" filterMatchMode="contains"
                   headerText="ID">
             <h:outputText value="#{courier.id}"/>
@@ -68,11 +68,6 @@
                   headerText="Utolsó módosító felhasználó" rendered="#{loggedInUserBean.isAdmin()}">
             <h:outputText value="#{courier.modifiedBy.userName}"/>
         </p:column>
-        <p:rowExpansion>
-            <div>
-                Leírás: #{courier.description}
-            </div>
-        </p:rowExpansion>
     </p:dataTable>
 
 

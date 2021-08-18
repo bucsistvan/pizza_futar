@@ -45,34 +45,6 @@ public class Courier extends AbstractCompany {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-/*
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Courier courier = (Courier) o;
-
-        String oFullName = null;
-        if (firstName != null && lastName != null) {
-            oFullName = firstName + " " + lastName;
-        }
-        String fullName = firstName+" "+lastName;
-
-        if (getId() != null ? !getId().equals(courier.getId()) : courier.getId() != null) return false;
-        return Objects.equals(fullName, oFullName);
-    }
-
-    @Override
-    public int hashCode() {
-        String fullName = null;
-        if (firstName != null && lastName != null) {
-            fullName = firstName + " " + lastName;
-        }
-        int result = getId() != null ? getId().hashCode() : 0;
-        result = 31 * result + (fullName != null ? fullName.hashCode() : 0);
-        return result;
-    }*/
 
     @Override
     public boolean equals(Object o) {
