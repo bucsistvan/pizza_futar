@@ -1,0 +1,58 @@
+GET http://localhost:8080/api/order
+Accept: application/json
+
+###
+
+GET http://localhost:8080/api/order/13
+Accept: application/json
+
+###
+
+POST http://localhost:8080/api/order
+Content-Type: application/json
+
+{
+  "createdById": 9,
+  "modifiedById": 9,
+  "createdDate": "2020-11-16T04:25:03Z",
+  "modifiedDate": "2020-11-16T04:25:03Z",
+  "deliveredDate": "2021-09-30T12:21:00Z[UTC]",
+  "houseNumber": "fesgebse",
+  "natureOfPublicSpace": "bdbrbdrbdr",
+  "pizzas": [
+    1,
+    4
+  ],
+  "publicSpace": "dddddddddd",
+  "settlement": "sssssssss"
+}
+
+###
+
+PUT http://localhost:8080/api/order
+Content-Type: application/json
+
+{
+  "id": 13,
+  "createdById": 9,
+  "modifiedById": 9,
+  "createdDate": "2020-11-16T04:25:03Z",
+  "modifiedDate": "2020-11-16T04:25:03Z",
+  "deliveredDate": "2021-09-30T12:21:00Z[UTC]",
+  "houseNumber": "fesgebse",
+  "natureOfPublicSpace": "bdbrbdrbdr",
+  "pizzas": [
+    1,
+    4,
+    2
+  ],
+  "publicSpace": "dddddddddd",
+  "settlement": "sssssssss"
+}
+
+###
+
+DELETE http://localhost:8080/api/order/13
+Accept: application/json
+
+###

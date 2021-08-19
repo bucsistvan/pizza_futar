@@ -3,6 +3,7 @@ package hu.ulyssys.java.course.maven.entity;
 import javax.persistence.*;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,7 +21,7 @@ public class Order extends AbstractCompany {
     @ManyToOne(fetch = FetchType.EAGER)
     private Courier courier;
 
-    @Min(value = 1)
+    @NotEmpty
     @JoinColumn(name = "order_id")
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Pizza> pizzas = new ArrayList<>();

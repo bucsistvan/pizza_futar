@@ -1,6 +1,7 @@
 package hu.ulyssys.java.course.maven.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.PastOrPresent;
 import java.util.Date;
 
 @MappedSuperclass
@@ -10,6 +11,7 @@ public abstract class AbstractEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @PastOrPresent
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_date", nullable = false)
     private Date createdDate;

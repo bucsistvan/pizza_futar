@@ -1,11 +1,13 @@
 package hu.ulyssys.java.course.maven.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.PastOrPresent;
 import java.util.Date;
 
 @MappedSuperclass
 public abstract class AbstractCompany extends AbstractEntity{
 
+    @PastOrPresent
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "modified_date")
     private Date modifiedDate;
