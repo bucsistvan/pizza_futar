@@ -32,12 +32,11 @@ public class LoginRequestBean {
             //Ha sikeres a login
             AppUser appUser = userService.findByUserName(model.getUsername());
             if (appUser == null) {
-                throw new SecurityException("Nem létező felhasználó");
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Hibás jelszó vagy felhasználónév", ""));
             }
             String hashedPassword = DigestUtils.sha512Hex(model.getPassword());
             if (!hashedPassword.equals(appUser.getPasswordHash())) {
-                throw new SecurityException("Nem megfelelő jelszó");
-
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Hibás jelszó vagy felhasználónév", ""));
             }
             LoggedInUserModel loggedInUserModel = new LoggedInUserModel();
             loggedInUserModel.setUsername(appUser.getUserName());

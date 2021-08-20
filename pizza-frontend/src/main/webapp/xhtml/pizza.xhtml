@@ -49,13 +49,13 @@
         <p:column sortBy="#{pizza.createdDate}" filterBy="#{pizza.createdDate}" filterMatchMode="contains"
                   headerText="Létrehozás dátuma" rendered="#{loggedInUserBean.isAdmin()}">
             <h:outputText value="#{pizza.createdDate}">
-                <f:convertDateTime pattern="dd.MM.yyyy HH:mm" />
+                <f:convertDateTime pattern="yyyy.MM.dd HH:mm" />
             </h:outputText>
         </p:column>
         <p:column sortBy="#{pizza.modifiedDate}" filterBy="#{pizza.modifiedDate}" filterMatchMode="contains"
                   headerText="Utolsó módosítás dátuma" rendered="#{loggedInUserBean.isAdmin()}">
             <h:outputText value="#{pizza.modifiedDate}">
-                <f:convertDateTime pattern="dd.MM.yyyy HH:mm" />
+                <f:convertDateTime pattern="yyyy.MM.dd HH:mm" />
             </h:outputText>
         </p:column>
         <p:column sortBy="#{pizza.createdBy.userName}" filterBy="#{pizza.createdBy.userName}" filterMatchMode="contains"

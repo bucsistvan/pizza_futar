@@ -23,7 +23,6 @@ public class PizzaDAOImpl extends CoreDAOImpl<Pizza> implements PizzaDAO {
         if(pizzaList.isEmpty()){
             return null;
         }
-        System.out.println("findByUserName: "+pizzaList.get(0).getName());
         return pizzaList.get(0);
     }
 }

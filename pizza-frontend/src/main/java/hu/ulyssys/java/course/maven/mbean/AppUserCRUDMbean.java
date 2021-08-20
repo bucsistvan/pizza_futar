@@ -15,12 +15,16 @@ import java.io.Serializable;
 @Named
 @ViewScoped
 public class AppUserCRUDMbean extends CoreCRUDMbean<AppUser> implements Serializable {
+
+    private LoggedInUserBean loggedInUserBean;
+
     @Inject
     public AppUserCRUDMbean(AppUserService appUserService, LoggedInUserBean loggedInUserBean) {
         super(appUserService);
         if (!loggedInUserBean.isAdmin()){
             throw new SecurityException("Nincs elég jogosúltságod!");
         }
+        this.loggedInUserBean = loggedInUserBean;
     }
 
     @Override
@@ -43,6 +47,15 @@ public class AppUserCRUDMbean extends CoreCRUDMbean<AppUser> implements Serializ
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Hiba történt hashelés közben", ""));
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void remove() {
+        if (loggedInUserBean.getModel().getId() != selectedEntity.getId()){
+            super.remove();
+        }else{
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Nem törölheted saját magad az adatbázisból", ""));
         }
     }
 

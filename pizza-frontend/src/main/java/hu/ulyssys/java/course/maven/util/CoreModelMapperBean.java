@@ -1,14 +1,19 @@
 package hu.ulyssys.java.course.maven.util;
 
 import hu.ulyssys.java.course.maven.entity.AbstractCompany;
+import hu.ulyssys.java.course.maven.entity.AppUserRole;
+import hu.ulyssys.java.course.maven.mbean.LoggedInUserBean;
 import hu.ulyssys.java.course.maven.rest.model.CoreRestModel;
 import hu.ulyssys.java.course.maven.service.AppUserService;
 
 import javax.inject.Inject;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public abstract class CoreModelMapperBean<M extends CoreRestModel, T extends AbstractCompany> {
+
+    private LoggedInUserBean loggedInUserBean;
 
     @Inject
     private AppUserService appUserService;
@@ -32,14 +37,8 @@ public abstract class CoreModelMapperBean<M extends CoreRestModel, T extends Abs
     }
 
     public void populateEntityFromModel(T entity, M model) {
-        entity.setCreatedDate(model.getCreatedDate());
-        entity.setModifiedDate(model.getModifiedDate());
-        if (model.getCreatedById() != null) {
-            entity.setCreatedBy(appUserService.findById(model.getCreatedById()));
-        }
-        if (model.getModifiedById() != null) {
-            entity.setModifiedBy(appUserService.findById(model.getModifiedById()));
-        }
+        entity.setModifiedDate(new Date(System.currentTimeMillis()));
+        entity.setModifiedBy(appUserService.getAll().stream().filter(appUser -> appUser.getRole().equals(AppUserRole.valueOf("ADMIN"))).collect(Collectors.toList()).get(0));
     }
 
     public abstract M initNewModel();

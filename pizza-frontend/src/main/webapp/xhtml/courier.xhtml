@@ -51,13 +51,13 @@
         <p:column sortBy="#{courier.createdDate}" filterBy="#{courier.createdDate}" filterMatchMode="contains"
                   headerText="Létrehozás dátuma">
             <h:outputText value="#{courier.createdDate}">
-                <f:convertDateTime pattern="dd.MM.yyyy HH:mm" />
+                <f:convertDateTime pattern="yyyy.MM.dd HH:mm" />
             </h:outputText>
         </p:column>
         <p:column sortBy="#{courier.modifiedDate}" filterBy="#{courier.modifiedDate}" filterMatchMode="contains"
                   headerText="Utolsó módosítás dátuma">
             <h:outputText value="#{courier.modifiedDate}">
-                <f:convertDateTime pattern="dd.MM.yyyy HH:mm" />
+                <f:convertDateTime pattern="yyyy.MM.dd HH:mm" />
             </h:outputText>
         </p:column>
         <p:column sortBy="#{courier.createdBy.userName}" filterBy="#{courier.createdBy.userName}" filterMatchMode="contains"

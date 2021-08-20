@@ -1,7 +1,9 @@
 package hu.ulyssys.java.course.maven.rest;
 
 import hu.ulyssys.java.course.maven.entity.AbstractCompany;
+import hu.ulyssys.java.course.maven.entity.AppUserRole;
 import hu.ulyssys.java.course.maven.rest.model.CoreRestModel;
+import hu.ulyssys.java.course.maven.service.AppUserService;
 import hu.ulyssys.java.course.maven.service.CoreService;
 import hu.ulyssys.java.course.maven.util.CoreModelMapperBean;
 
@@ -12,6 +14,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
+import java.util.Date;
 import java.util.stream.Collectors;
 
 public abstract class CoreRestService<T extends AbstractCompany, M extends CoreRestModel> {
@@ -19,8 +22,9 @@ public abstract class CoreRestService<T extends AbstractCompany, M extends CoreR
     @Inject
     private CoreService<T> coreService;
 
-    /*@Inject
-    private FarmerAwareService<T> farmerAwareService;*/
+    @Inject
+    private AppUserService appUserService;
+
     @Inject
     private CoreModelMapperBean<M, T> modelMapperBean;
 
@@ -35,15 +39,7 @@ public abstract class CoreRestService<T extends AbstractCompany, M extends CoreR
         return Response.ok(createModelFromEntity(entity)).build();
 
     }
-/*
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/owner/{id}")
-    public Response findByFarmerId(@PathParam("id") Long id) {
-        return Response.ok(farmerAwareService.findByFarmerId(id).stream().map(this::createModelFromEntity).collect(Collectors.toList())).build();
 
-    }
-*/
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response findAll() {
@@ -56,6 +52,8 @@ public abstract class CoreRestService<T extends AbstractCompany, M extends CoreR
     public Response save(@Valid M model) {
 
         T entity = initNewEntity();
+        entity.setCreatedDate(new Date(System.currentTimeMillis()));
+        entity.setCreatedBy(appUserService.getAll().stream().filter(appUser -> appUser.getRole().equals(AppUserRole.valueOf("ADMIN"))).collect(Collectors.toList()).get(0));
         populateEntityFromModel(entity, model);
 
         coreService.add(entity);

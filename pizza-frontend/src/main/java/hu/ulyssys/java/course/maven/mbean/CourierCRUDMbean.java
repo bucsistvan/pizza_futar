@@ -6,6 +6,8 @@ import hu.ulyssys.java.course.maven.service.AppUserService;
 import hu.ulyssys.java.course.maven.service.CourierService;
 import hu.ulyssys.java.course.maven.service.PizzaService;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -19,6 +21,15 @@ public class CourierCRUDMbean extends CompanyCRUDMbean<Courier> implements Seria
         super(courierService, appUserService, loggedInUserBean);
         if (!loggedInUserBean.isAdmin()){
             throw new SecurityException("Nincs elég jogosúltságod!");
+        }
+    }
+
+    @Override
+    public void save() {
+        if (!selectedEntity.getLastName().equals(selectedEntity.getFirstName())){
+            super.save();
+        }else {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "A keresztnév és a vezetéknév különböző kell legyen!", ""));
         }
     }
 

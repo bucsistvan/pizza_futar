@@ -15,17 +15,19 @@
 <ui:define name="title">Registration</ui:define>
 <ui:define name="content">
 
-
-    <h:form id="userForm" style="margin-right: auto;margin-left: auto">
-        <p:panelGrid layout="grid" columns="2" style="width:450px">
-            <p:commandButton oncomplete="PF('loginDialog').show()"
-                             value="Login" icon="pi pi-fw pi-sign-in"
-                             styleClass="ui-button-info"/>
-            <p:commandButton oncomplete="PF('registrationDialog').show()"
-                             value="Registration" icon="pi pi-fw"
-                             styleClass="ui-button-info"/>
-        </p:panelGrid>
-    </h:form>
+    <div style="width: 100%; height: 95%">
+        <h:form id="userForm" style="margin-right: auto; margin-left: auto; width: 30%;
+                                    display: flex; flex-direction: row; justify-content: center;">
+                <p:commandButton oncomplete="PF('loginDialog').show()"
+                                 value="Login" icon="pi pi-fw pi-sign-in"
+                                 styleClass="ui-button-info"
+                                 style="margin: 40px"/>
+                <p:commandButton oncomplete="PF('registrationDialog').show()"
+                                 value="Registration" icon="pi pi-fw"
+                                 styleClass="ui-button-info"
+                                 style="margin: 40px"/>
+        </h:form>
+    </div>
     <p:dialog header="Login" modal="true" widgetVar="loginDialog" id="loginDialog" closable="true">
         <h:form>
             <p:panelGrid layout="grid" columns="2" style="width:450px">

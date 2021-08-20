@@ -12,7 +12,7 @@
 <h:body>
 
     <ui:insert name="menuBar">
-        <h:form id="menuForm">
+        <h:form id="menuForm" rendered="#{loggedInUserBean.isLoggedIn()}">
             <!--hogyen kellene úgy model-el elkészíteni a menüt, hogy uygan így nézzen ki-->
             <p:menubar model="#{menuProviderBean.getMenuModel()}" rendered="#{loggedInUserBean.isLoggedIn()}">
                 <f:facet name="options">

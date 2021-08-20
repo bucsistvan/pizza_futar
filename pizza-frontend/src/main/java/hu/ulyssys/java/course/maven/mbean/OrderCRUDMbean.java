@@ -54,22 +54,6 @@ public class OrderCRUDMbean extends CompanyCRUDMbean<Order> implements Serializa
             setList(orderService.getAll());
         }
     }
-/*
-    public void writeOutEntity(){
-        System.out.println(selectedEntity.getId());
-        System.out.println(selectedEntity.getCreatedDate());
-        System.out.println(selectedEntity.getModifiedDate());
-        System.out.println(selectedEntity.getHouseNumber());
-        System.out.println(selectedEntity.getNatureOfPublicSpace());
-        System.out.println(selectedEntity.getPublicSpace());
-        System.out.println(selectedEntity.getSettlement());
-        System.out.println(selectedEntity.getCreatedBy().getId());
-        System.out.println(selectedEntity.getModifiedBy().getId());
-        System.out.println(selectedEntity.getDeliveredDate());
-        System.out.println(selectedEntity.getCourier().getId());
-        selectedEntity.getPizzas().forEach(pizza -> System.out.println("Pizza: "+pizza.getName()));
-    }*/
-
 
     public List<Courier> getCourierList() {
         return courierList;
