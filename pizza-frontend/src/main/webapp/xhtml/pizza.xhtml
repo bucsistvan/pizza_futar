@@ -67,9 +67,12 @@
             <h:outputText value="#{pizza.modifiedBy.userName}"/>
         </p:column>
         <p:rowExpansion>
-            <div>
-                Leírás: #{pizza.description}
-            </div>
+            <h3>
+                Leírás:
+            </h3>
+            <p>
+                #{pizza.description}
+            </p>
         </p:rowExpansion>
     </p:dataTable>
 
@@ -82,7 +85,7 @@
 </h:form>
 
 
-<p:dialog id="pizzaDialog" widgetVar="pizzaDialog" header="Form" modal="true" closable="true">
+<p:dialog id="pizzaDialog" widgetVar="pizzaDialog" header="Pizza" modal="true" closable="true">
     <h:form id="pizzaForm">
         <p:panelGrid layout="grid" columns="2" id="formPanel" style="width:450px">
             <p:outputLabel value="Név"/>

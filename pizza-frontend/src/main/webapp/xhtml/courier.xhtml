@@ -10,7 +10,7 @@
 <body>
 <ui:composition template="layout/mainTemplate.xhtml">
 
-<ui:define name="title">courier demo</ui:define>
+<ui:define name="title">Futárok</ui:define>
 <ui:define name="content">
 <h:form id="form" rendered="#{loggedInUserBean.isLoggedIn()}">
     <!--<ui:composition template="../templates/template.xhtml"/>-->
@@ -79,7 +79,7 @@
 </h:form>
 
 
-<p:dialog id="courierDialog" widgetVar="courierDialog" header="Form" modal="true" closable="true">
+<p:dialog id="courierDialog" widgetVar="courierDialog" header="Futár" modal="true" closable="true">
     <h:form id="courierForm">
         <p:panelGrid layout="grid" columns="2" id="formPanel" style="width:450px">
             <p:outputLabel value="Keresztnév"/>

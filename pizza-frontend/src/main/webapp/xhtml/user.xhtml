@@ -12,7 +12,7 @@
 <body>
 <ui:composition template="layout/mainTemplate.xhtml">
 
-<ui:define name="title">User demo</ui:define>
+<ui:define name="title">Felhasználók</ui:define>
 <ui:define name="content">
 <h:form id="form" rendered="#{loggedInUserBean.isLoggedIn()}">
     <!--<ui:composition template="../templates/template.xhtml"/>-->
@@ -62,7 +62,7 @@
 </h:form>
 
 
-<p:dialog id="userDialog" widgetVar="userDialog" header="Form" modal="true" closable="true">
+<p:dialog id="userDialog" widgetVar="userDialog" header="Felhasználó" modal="true" closable="true">
     <h:form id="userForm">
         <p:panelGrid layout="grid" columns="2" id="formPanel" style="width:450px"
         >

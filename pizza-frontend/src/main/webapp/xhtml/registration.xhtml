@@ -12,23 +12,23 @@
 <body>
 <ui:composition template="layout/mainTemplate.xhtml">
 
-<ui:define name="title">Registration</ui:define>
+<ui:define name="title">Regisztráció</ui:define>
 <ui:define name="content">
 
     <div style="width: 100%; height: 95%">
         <h:form id="userForm" style="margin-right: auto; margin-left: auto; width: 30%;
                                     display: flex; flex-direction: row; justify-content: center;">
                 <p:commandButton oncomplete="PF('loginDialog').show()"
-                                 value="Login" icon="pi pi-fw pi-sign-in"
+                                 value="Bejelentkezés" icon="pi pi-fw pi-sign-in"
                                  styleClass="ui-button-info"
                                  style="margin: 40px"/>
                 <p:commandButton oncomplete="PF('registrationDialog').show()"
-                                 value="Registration" icon="pi pi-fw"
+                                 value="Regisztráció"
                                  styleClass="ui-button-info"
                                  style="margin: 40px"/>
         </h:form>
     </div>
-    <p:dialog header="Login" modal="true" widgetVar="loginDialog" id="loginDialog" closable="true">
+    <p:dialog header="Bejelentkezés" modal="true" widgetVar="loginDialog" id="loginDialog" closable="true">
         <h:form>
             <p:panelGrid layout="grid" columns="2" style="width:450px">
                 <p:outputLabel value="Név"/>
@@ -39,12 +39,12 @@
                 <p:password required="true" requiredMessage="Jelszó kötelező"
                             value="#{registrationCRUDMbean.selectedEntity.passwordHash}"/>
 
-                <p:commandButton value="Login" actionListener="#{registrationCRUDMbean.doLogin}"/>
+                <p:commandButton value="Bejelentkezés" actionListener="#{registrationCRUDMbean.doLogin}"/>
             </p:panelGrid>
         </h:form>
     </p:dialog>
 
-    <p:dialog header="registration" modal="true" widgetVar="registrationDialog" id="registrationDialog" closable="true">
+    <p:dialog header="Regisztráció" modal="true" widgetVar="registrationDialog" id="registrationDialog" closable="true">
         <h:form>
             <p:panelGrid layout="grid" columns="2" style="width:450px">
             <p:outputLabel value="Név"/>
@@ -64,7 +64,7 @@
                 <f:selectItem itemValue="USER" itemLabel="Sima felhasználó"/>
             </p:selectOneMenu>
 
-            <p:commandButton value="Mentés" actionListener="#{registrationCRUDMbean.registration}"/>
+            <p:commandButton value="Regisztráció" actionListener="#{registrationCRUDMbean.registration}"/>
             </p:panelGrid>
         </h:form>
     </p:dialog>

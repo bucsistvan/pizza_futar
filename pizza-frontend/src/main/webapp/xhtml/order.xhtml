@@ -83,13 +83,13 @@
         </p:column>
         <p:rowExpansion>
             <div>
-                <p:dataTable var="pizza" value="#{order.pizzas}">
-                    <p:column>
-                        <h:outputText value="#{pizza.name}"/>
-                    </p:column>
-
-                </p:dataTable>
-
+                <p:dataList id="simple" value="#{order.pizzas}"
+                            var="pizzas" itemType="disc">
+                    <f:facet name="header">
+                        Rendelt pizzák:
+                    </f:facet>
+                    <h:outputText value="#{pizzas.name}" />
+                </p:dataList>
             </div>
         </p:rowExpansion>
     </p:dataTable>
@@ -103,7 +103,7 @@
 </h:form>
 
 
-<p:dialog id="orderDialog" widgetVar="orderDialog" header="Form" modal="true" closable="true">
+<p:dialog id="orderDialog" widgetVar="orderDialog" header="Rendelés" modal="true" closable="true">
     <h:form id="orderForm">
         <p:panelGrid layout="grid" columns="2" id="formPanel" style="width:450px">
             <p:outputLabel value="Település"/>
