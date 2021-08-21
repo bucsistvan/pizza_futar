@@ -1,24 +1,19 @@
 package hu.ulyssys.java.course.maven.rest.model;
 
-import hu.ulyssys.java.course.maven.entity.AppUser;
-
 import javax.validation.constraints.*;
 import java.util.Date;
 
 public abstract class CoreRestModel {
     private Long id;
 
-    @NotNull
     @PastOrPresent
     private Date createdDate;
 
     @PastOrPresent
     private Date modifiedDate;
 
-    @NotNull
     private Long createdById;
 
-    @NotNull
     private Long modifiedById;
 
     public Long getId() {

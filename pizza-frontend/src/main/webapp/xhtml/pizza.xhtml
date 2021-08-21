@@ -13,18 +13,10 @@
 <ui:define name="title">Pizzák</ui:define>
 <ui:define name="content">
 <h:form id="form" rendered="#{loggedInUserBean.isLoggedIn()}">
-    <!--<ui:composition template="../templates/template.xhtml"/>-->
-    <!--<ui:insert name="menu">
-        <ui:include src="../templates/template.xhtml"></ui:include>
-    </ui:insert>-->
     <p:growl id="growl" showDetail="false"/>
-
-
 
     <crud:crudFunctions id="crudFunctions" bean="#{pizzaCRUDMbean}" onCompleShowDialog="PF('pizzaDialog').show()"
                         onCompleUpdate="@([id$=pizzaForm])" onRendered="#{loggedInUserBean.isAdmin()}"/>
-
-
 
     <p:dataTable id="table" value="#{pizzaCRUDMbean.list}" var="pizza" rows="10"
                  selectionMode="single" selection="#{pizzaCRUDMbean.selectedEntity}" rowKey="#{pizza.id}"
@@ -76,7 +68,6 @@
         </p:rowExpansion>
     </p:dataTable>
 
-
     <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="400">
         <p:commandButton value="Nem" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
         <p:commandButton value="Igen" type="button" styleClass="ui-confirmdialog-yes"/>
@@ -99,14 +90,6 @@
             <p:outputLabel value="Ár"/>
             <p:inputNumber thousandSeparator="" decimalPlaces="0" required="true" requiredMessage="Ár kötelező"
                          value="#{pizzaCRUDMbean.selectedEntity.price}"/>
-
-<!--
-            <p:outputLabel value="Tulajdonos"/>
-            <p:selectOneMenu value="#{pizzaCRUDMbean.selectedEntity.owner}" converter="#{ownerConverter}" >
-                <f:selectItem itemValue="#{null}" itemLabel="Kérem válasszon"/>
-                <f:selectItems value="#{pizzaCRUDMbean.ownerList}" var="owner" itemLabel="#{owner.fullName}" itemValue="#{owner}"/>
-            </p:selectOneMenu>
-            -->
 
             <p:commandButton value="Mentés" icon="pi pi-save" actionListener="#{pizzaCRUDMbean.save()}" validateClient="true"
                              process="formPanel" update=":form">

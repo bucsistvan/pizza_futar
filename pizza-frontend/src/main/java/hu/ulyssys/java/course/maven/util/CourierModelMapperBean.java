@@ -1,9 +1,7 @@
 package hu.ulyssys.java.course.maven.util;
 
 import hu.ulyssys.java.course.maven.entity.Courier;
-import hu.ulyssys.java.course.maven.entity.Pizza;
 import hu.ulyssys.java.course.maven.rest.model.CourierModel;
-import hu.ulyssys.java.course.maven.rest.model.PizzaModel;
 
 public class CourierModelMapperBean extends CoreModelMapperBean<CourierModel, Courier> {
     @Override

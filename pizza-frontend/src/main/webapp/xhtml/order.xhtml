@@ -13,18 +13,10 @@
 <ui:define name="title">Rendelés</ui:define>
 <ui:define name="content">
 <h:form id="form" rendered="#{loggedInUserBean.isLoggedIn()}">
-    <!--<ui:composition template="../templates/template.xhtml"/>-->
-    <!--<ui:insert name="menu">
-        <ui:include src="../templates/template.xhtml"></ui:include>
-    </ui:insert>-->
     <p:growl id="growl" showDetail="false"/>
-
-
 
     <crud:crudFunctions id="crudFunctions" bean="#{orderCRUDMbean}" onCompleShowDialog="PF('orderDialog').show()"
                         onCompleUpdate="@([id$=orderForm])" onRendered="true"/>
-
-
 
     <p:dataTable id="table" value="#{orderCRUDMbean.list}" var="order" rows="10"
                  selectionMode="single" selection="#{orderCRUDMbean.selectedEntity}" rowKey="#{order.id}"
@@ -115,7 +107,8 @@
                          value="#{orderCRUDMbean.selectedEntity.publicSpace}"/>
 
             <p:outputLabel value="Közterület jellege"/>
-            <p:selectOneMenu value="#{orderCRUDMbean.selectedEntity.natureOfPublicSpace}" required="true">
+            <p:selectOneMenu required="true" requiredMessage="A közterület jellege kötelező"
+                             value="#{orderCRUDMbean.selectedEntity.natureOfPublicSpace}">
                 <f:selectItem itemLabel="Kérem válasszon" itemValue=""/>
                 <f:selectItem itemLabel="utca" itemValue="utca"/>
                 <f:selectItem itemLabel="köz" itemValue="köz"/>

@@ -13,18 +13,10 @@
 <ui:define name="title">Futárok</ui:define>
 <ui:define name="content">
 <h:form id="form" rendered="#{loggedInUserBean.isLoggedIn()}">
-    <!--<ui:composition template="../templates/template.xhtml"/>-->
-    <!--<ui:insert name="menu">
-        <ui:include src="../templates/template.xhtml"></ui:include>
-    </ui:insert>-->
     <p:growl id="growl" showDetail="false"/>
-
-
 
     <crud:crudFunctions id="crudFunctions" bean="#{courierCRUDMbean}" onCompleShowDialog="PF('courierDialog').show()"
                         onCompleUpdate="@([id$=courierForm])" onRendered="true"/>
-
-
 
     <p:dataTable id="table" value="#{courierCRUDMbean.list}" var="courier" rows="10"
                  selectionMode="single" selection="#{courierCRUDMbean.selectedEntity}" rowKey="#{courier.id}"
@@ -95,14 +87,6 @@
                          value="#{courierCRUDMbean.selectedEntity.phoneNumber}" validatorMessage="Kérem adjon meg egy magyarországi telefonszámot.">
                 <f:validateRegex pattern="((\+36)|(00)|(06))[0-9]{8}"/>
             </p:inputText>
-
-<!--
-            <p:outputLabel value="Tulajdonos"/>
-            <p:selectOneMenu value="#{courierCRUDMbean.selectedEntity.owner}" converter="#{ownerConverter}" >
-                <f:selectItem itemValue="#{null}" itemLabel="Kérem válasszon"/>
-                <f:selectItems value="#{courierCRUDMbean.ownerList}" var="owner" itemLabel="#{owner.fullName}" itemValue="#{owner}"/>
-            </p:selectOneMenu>
-            -->
 
             <p:commandButton value="Mentés" icon="pi pi-save" actionListener="#{courierCRUDMbean.save()}" validateClient="true"
                              process="formPanel" update=":form">

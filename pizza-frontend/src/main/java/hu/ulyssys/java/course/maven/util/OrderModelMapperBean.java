@@ -2,9 +2,7 @@ package hu.ulyssys.java.course.maven.util;
 
 import hu.ulyssys.java.course.maven.entity.AbstractEntity;
 import hu.ulyssys.java.course.maven.entity.Order;
-import hu.ulyssys.java.course.maven.entity.Pizza;
 import hu.ulyssys.java.course.maven.rest.model.OrderModel;
-import hu.ulyssys.java.course.maven.rest.model.PizzaModel;
 import hu.ulyssys.java.course.maven.service.CourierService;
 import hu.ulyssys.java.course.maven.service.PizzaService;
 

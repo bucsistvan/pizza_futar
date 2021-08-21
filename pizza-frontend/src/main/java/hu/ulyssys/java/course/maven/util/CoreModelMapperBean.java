@@ -2,7 +2,6 @@ package hu.ulyssys.java.course.maven.util;
 
 import hu.ulyssys.java.course.maven.entity.AbstractCompany;
 import hu.ulyssys.java.course.maven.entity.AppUserRole;
-import hu.ulyssys.java.course.maven.mbean.LoggedInUserBean;
 import hu.ulyssys.java.course.maven.rest.model.CoreRestModel;
 import hu.ulyssys.java.course.maven.service.AppUserService;
 
@@ -12,8 +11,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public abstract class CoreModelMapperBean<M extends CoreRestModel, T extends AbstractCompany> {
-
-    private LoggedInUserBean loggedInUserBean;
 
     @Inject
     private AppUserService appUserService;

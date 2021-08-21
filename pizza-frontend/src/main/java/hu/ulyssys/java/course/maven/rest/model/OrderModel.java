@@ -1,10 +1,6 @@
 package hu.ulyssys.java.course.maven.rest.model;
 
-import hu.ulyssys.java.course.maven.entity.Courier;
-import hu.ulyssys.java.course.maven.entity.Pizza;
-
 import javax.validation.constraints.Future;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;

@@ -1,7 +1,5 @@
 package hu.ulyssys.java.course.maven.rest.model;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 

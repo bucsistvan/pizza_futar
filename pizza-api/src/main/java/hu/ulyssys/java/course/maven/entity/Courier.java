@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 import java.util.Objects;
 
 @NamedQuery(name = Courier.FIND_BY_USERNAME, query = "select u from Courier u where u.firstName=:firstName and u.lastName=:lastName ")
@@ -20,6 +21,7 @@ public class Courier extends AbstractCompany {
     private String lastName;
 
     @Column(name = "phone_number", nullable = false)
+    @Pattern(message = "", regexp = "((\\+36)|(00)|(06))[0-9]{8}")
     private String phoneNumber;
 
     public String getFirstName() {

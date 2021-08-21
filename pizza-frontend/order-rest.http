@@ -12,10 +12,6 @@ POST http://localhost:8080/api/order
 Content-Type: application/json
 
 {
-  "createdById": 9,
-  "modifiedById": 9,
-  "createdDate": "2020-11-16T04:25:03Z",
-  "modifiedDate": "2020-11-16T04:25:03Z",
   "deliveredDate": "2021-09-30T12:21:00Z[UTC]",
   "houseNumber": "fesgebse",
   "natureOfPublicSpace": "bdbrbdrbdr",
