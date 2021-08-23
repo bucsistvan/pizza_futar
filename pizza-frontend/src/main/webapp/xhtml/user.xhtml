@@ -37,7 +37,7 @@
         <p:column sortBy="#{user.createdDate}" filterBy="#{user.createdDate}" filterMatchMode="contains"
                   headerText="Létrehozás dátuma">
             <h:outputText value="#{user.createdDate}">
-                <f:convertDateTime pattern="yyyy.MM.dd HH:mm" />
+                <f:convertDateTime pattern="yyyy.MM.dd HH:mm" timeZone="Europe/Budapest"/>
             </h:outputText>
         </p:column>
         <p:column sortBy="#{user.role}" filterBy="#{user.role}" headerText="role"

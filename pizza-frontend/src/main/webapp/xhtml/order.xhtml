@@ -50,19 +50,19 @@
         <p:column sortBy="#{order.deliveredDate}" filterBy="#{order.deliveredDate}" filterMatchMode="contains"
                   headerText="Szállítás ideje">
             <h:outputText value="#{order.deliveredDate}">
-                <f:convertDateTime pattern="yyyy.MM.dd HH:mm" />
+                <f:convertDateTime pattern="yyyy.MM.dd HH:mm" timeZone="Europe/Budapest"/>
             </h:outputText>
         </p:column>
         <p:column sortBy="#{order.createdDate}" filterBy="#{order.createdDate}" filterMatchMode="contains"
                   headerText="Létrehozás dátuma" rendered="#{loggedInUserBean.isAdmin()}">
             <h:outputText value="#{order.createdDate}">
-                <f:convertDateTime pattern="yyyy.MM.dd HH:mm" />
+                <f:convertDateTime pattern="yyyy.MM.dd HH:mm" timeZone="Europe/Budapest"/>
             </h:outputText>
         </p:column>
         <p:column sortBy="#{order.modifiedDate}" filterBy="#{order.modifiedDate}" filterMatchMode="contains"
                   headerText="Utolsó módosítás dátuma" rendered="#{loggedInUserBean.isAdmin()}">
             <h:outputText value="#{order.modifiedDate}">
-                <f:convertDateTime pattern="yyyy.MM.dd HH:mm" />
+                <f:convertDateTime pattern="yyyy.MM.dd HH:mm" timeZone="Europe/Budapest"/>
             </h:outputText>
         </p:column>
         <p:column sortBy="#{order.createdBy.userName}" filterBy="#{order.createdBy.userName}" filterMatchMode="contains"
